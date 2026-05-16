@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Extended user profile data including fashion preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "gender": { "type": "string", "enum": ["male", "female", "other"] },
+        "skinTone": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Favorite": {
+      "title": "Favorite Item",
+      "description": "An item saved by the user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "brand": { "type": "string" },
+        "platform": { "type": "string" },
+        "price": { "type": "string" },
+        "link": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "category": { "type": "string", "enum": ["outfit", "makeup"] },
+        "savedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "title", "platform", "link"]
+    },
+    "Order": {
+      "title": "Tracked Order",
+      "description": "An order being tracked by the user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "itemTitle": { "type": "string" },
+        "status": { "type": "string" },
+        "deliveryDate": { "type": "string" },
+        "platform": { "type": "string" }
+      },
+      "required": ["userId", "orderNumber"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Stores user profile information."
+    },
+    "/users/{userId}/favorites/{favoriteId}": {
+      "schema": "Favorite",
+      "description": "Stores user's favorite outfits and makeup items."
+    },
+    "/users/{userId}/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Stores user's tracked orders."
+    }
+  }
+}

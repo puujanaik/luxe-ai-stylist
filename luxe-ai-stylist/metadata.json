@@ -1,0 +1,6 @@
+{
+  "name": "Luxe AI Stylist",
+  "description": "Premium AI-powered fashion assistant featuring skincare analysis, virtual try-ons, and global price comparison.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": []
+}
